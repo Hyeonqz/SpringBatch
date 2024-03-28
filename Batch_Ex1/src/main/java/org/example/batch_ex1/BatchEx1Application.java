@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BatchEx1Application {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BatchEx1Application.class, args);
+		System.out.println("hello world");
 	}
 
 }
