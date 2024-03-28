@@ -1,11 +1,10 @@
 package org.example.batch_ex1.domain.customer;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
+import org.example.batch_ex1.domain.batch.Job;
 import org.example.batch_ex1.domain.batch.JobExecution;
 import org.example.batch_ex1.domain.batch.enums.BatchStatus;
 import org.example.batch_ex1.domain.customer.enums.Status;
@@ -21,7 +20,7 @@ class DocumentBatchJobTest {
 	@Autowired
 	private CustomerRepository customerRepository;
 	@Autowired
-	private DocumentBatchJob documentBatchJob;
+	private Job job;
 
 	@BeforeEach
 	public void setup() {
@@ -42,7 +41,7 @@ class DocumentBatchJobTest {
 		saveCustomer(360);
 
 		// when
-		final JobExecution result = documentBatchJob.execute();
+		final JobExecution result = job.execute();
 
 		// then
 		final long dormantCount = customerRepository.findAll()
@@ -71,7 +70,7 @@ class DocumentBatchJobTest {
 		saveCustomer(400);
 
 		// when
-		JobExecution result = documentBatchJob.execute();
+		JobExecution result = job.execute();
 
 		// then
 		final long dormantCount = customerRepository.findAll()
@@ -88,7 +87,7 @@ class DocumentBatchJobTest {
 	@DisplayName("고객이 없는 경우에도 배치는 정상작동 해야한다.")
 	void test3() {
 		// when
-		final JobExecution result = documentBatchJob.execute();
+		final JobExecution result = job.execute();
 
 		// then
 		final long dormantCount = customerRepository.findAll()
@@ -106,10 +105,10 @@ class DocumentBatchJobTest {
 	void test4() {
 
 		// given
-		final DocumentBatchJob documentBatchJob = new DocumentBatchJob(null);
+		final Job job = new Job(null,null);
 
 		// when
-		final JobExecution result = documentBatchJob.execute();
+		final JobExecution result = job.execute();
 
 		// then
 		Assertions.assertThat(result.getStatus()).isEqualTo(BatchStatus.FAILED);
