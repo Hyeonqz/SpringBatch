@@ -3,7 +3,8 @@ package org.example.batch_ex1.domain.application.dormant;
 import java.time.LocalDateTime;
 
 import org.assertj.core.api.Assertions;
-import org.example.batch_ex1.domain.customer.Customer;
+import org.example.batch_ex1.domain.ex1.application.customer.Customer;
+import org.example.batch_ex1.domain.ex1.application.dormant.PreDormantBatchItemProcessor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

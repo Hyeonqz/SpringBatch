@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
-import org.example.batch_ex1.domain.batch.Job;
-import org.example.batch_ex1.domain.batch.JobExecution;
-import org.example.batch_ex1.domain.batch.TaskletJob;
-import org.example.batch_ex1.domain.batch.enums.BatchStatus;
-import org.example.batch_ex1.domain.customer.enums.Status;
+import org.example.batch_ex1.domain.ex1.application.batch.Job;
+import org.example.batch_ex1.domain.ex1.application.batch.JobExecution;
+import org.example.batch_ex1.domain.ex1.application.batch.TaskletJob;
+import org.example.batch_ex1.domain.ex1.application.batch.enums.BatchStatus;
+import org.example.batch_ex1.domain.ex1.application.customer.Customer;
+import org.example.batch_ex1.domain.ex1.application.customer.CustomerRepository;
+import org.example.batch_ex1.domain.ex1.application.customer.enums.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
