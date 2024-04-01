@@ -1,4 +1,4 @@
-package org.example.batch_ex1.domain.application;
+package org.example.batch_ex1.domain.application.dormant;
 
 import org.example.batch_ex1.domain.batch.ItemWriter;
 import org.example.batch_ex1.domain.customer.Customer;

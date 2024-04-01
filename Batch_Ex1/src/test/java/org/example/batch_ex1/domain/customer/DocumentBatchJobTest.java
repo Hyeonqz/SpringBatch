@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.assertj.core.api.Assertions;
 import org.example.batch_ex1.domain.batch.Job;
 import org.example.batch_ex1.domain.batch.JobExecution;
+import org.example.batch_ex1.domain.batch.TaskletJob;
 import org.example.batch_ex1.domain.batch.enums.BatchStatus;
 import org.example.batch_ex1.domain.customer.enums.Status;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DocumentBatchJobTest {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
 	@Autowired
@@ -29,7 +30,7 @@ class DocumentBatchJobTest {
 
 	@Test
 	@DisplayName("로그인 시간이 일년을 경과한 고객이 세명이고, 일년 이내에 로그인한 고객이 다섯명이면 3명의 고객이 휴먼전화 대상자이다.")
-	void test1 () {
+	void test1() {
 		// given
 		saveCustomer(366);
 		saveCustomer(366);
@@ -46,7 +47,7 @@ class DocumentBatchJobTest {
 		// then
 		final long dormantCount = customerRepository.findAll()
 			.stream()
-			.filter( it -> it.getStatus() == Status.DORMANT)
+			.filter(it -> it.getStatus() == Status.DORMANT)
 			.count();
 
 		Assertions.assertThat(dormantCount).isEqualTo(3);
@@ -75,7 +76,7 @@ class DocumentBatchJobTest {
 		// then
 		final long dormantCount = customerRepository.findAll()
 			.stream()
-			.filter( it -> it.getStatus() == Status.DORMANT)
+			.filter(it -> it.getStatus() == Status.DORMANT)
 			.count();
 
 		Assertions.assertThat(dormantCount).isEqualTo(10);
@@ -92,7 +93,7 @@ class DocumentBatchJobTest {
 		// then
 		final long dormantCount = customerRepository.findAll()
 			.stream()
-			.filter( it -> it.getStatus() == Status.DORMANT)
+			.filter(it -> it.getStatus() == Status.DORMANT)
 			.count();
 
 		Assertions.assertThat(dormantCount).isEqualTo(0);
@@ -105,7 +106,7 @@ class DocumentBatchJobTest {
 	void test4() {
 
 		// given
-		final Job job = new Job(null,null);
+		final Job job = new TaskletJob(null);
 
 		// when
 		final JobExecution result = job.execute();
@@ -114,12 +115,9 @@ class DocumentBatchJobTest {
 		Assertions.assertThat(result.getStatus()).isEqualTo(BatchStatus.FAILED);
 	}
 
-
-
-
 	private void saveCustomer(long loginMinusDays) {
 		final String uuid = UUID.randomUUID().toString();
-		final Customer customer = new Customer(uuid,uuid + "@naver.com");
+		final Customer customer = new Customer(uuid, uuid + "@naver.com");
 		customer.setLoginAt(LocalDateTime.now().minusDays(loginMinusDays));
 		customerRepository.save(customer);
 	}

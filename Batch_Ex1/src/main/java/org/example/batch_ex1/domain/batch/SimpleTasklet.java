@@ -1,12 +1,5 @@
 package org.example.batch_ex1.domain.batch;
 
-import org.example.batch_ex1.domain.application.DormantBatchItemProcessor;
-import org.example.batch_ex1.domain.application.DormantBatchItemReader;
-import org.example.batch_ex1.domain.application.DormantBatchItemWriter;
-import org.example.batch_ex1.domain.batch.ItemProcessor;
-import org.example.batch_ex1.domain.batch.ItemReader;
-import org.example.batch_ex1.domain.batch.ItemWriter;
-import org.example.batch_ex1.domain.batch.Tasklet;
 import org.springframework.stereotype.Component;
 
 @Component
