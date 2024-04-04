@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 public class JobConfiguration {
 
-	@Bean
+/*	@Bean
 	public Job job(JobRepository jobRepository, Step step) {
 		return new JobBuilder("job-chunk",jobRepository)
 			.start(step)
@@ -45,7 +45,7 @@ public class JobConfiguration {
 				return RepeatStatus.FINISHED;
 			}, platformTransactionManager)
 			.build();
-	}
+	}*/
 /*
 	@Bean
 	public Step step(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
