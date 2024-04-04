@@ -38,7 +38,7 @@ public class JobConfiguration {
 
 	@Bean
 	@JobScope
-	public Step step(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager,
+	public Step step(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager
 	) {
 		return new StepBuilder("step",jobRepository)
 			.tasklet( (a,b) -> {
